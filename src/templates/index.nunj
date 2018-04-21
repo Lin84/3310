@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WS</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="headline"></div>
+            </div>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <img src="./../images/svg/adoption.svg" alt="">
+            </li>
+            <li class="list-group-item">
+                {% include "./partials/modal.nunj" %}
+            </li>
+            <li class="list-group-item">
+                {% include "./partials/dropdown.nunj" %}
+            </li>
+            <li class="list-group-item">
+                <div class="plus-one"></div>
+            </li>
+            <li class="list-group-item">
+                <div class="button"></div>
+            </li>
+            <li class="list-group-item">
+                <div class="link">hello</div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
