@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -8,12 +9,15 @@ import MainDisplay from './_parts/MainDisplay';
 import MiniDisplay from './_parts/MiniDisplay';
 import NumericButtons from './_parts/NumericButtons';
 
-class Mobile extends Component {
-    state = {
-        results: [],
-        selectedValue: []
-    }
+// action creators:
+import {
+    updateSelectedData,
+    removeLastEnteredData,
+    resetData,
+    submitData
+} from './../../redux/action-creators/mobile';
 
+class Mobile extends Component {
     numericButtonsDefinition = [
         { label: '-', value: '' },
         { label: 'abc', value: '2' },
@@ -26,49 +30,18 @@ class Mobile extends Component {
         { label: 'wxyz', value: '9' }
     ]
 
-    handleClickCancelButton = () => {
-        const { selectedValue } = this.state;
-        const updatedSelectedValue = selectedValue.slice(0, -1);
-        this.setState({
-            selectedValue: updatedSelectedValue
-        });
-    }
-
     handleClickSendButton = () => {
-        if (this.state.selectedValue.length) {
-            const endpoint = 'http://localhost:3310/';
-            const data = this.state.selectedValue;
-            const method = 'post';
-
-            axios({
-                url: endpoint,
-                method,
-                data
-            }).then((response) => {
-                this.setState({
-                    results: response.data
-                });
-            }).catch((error) => {
-                console.error(error);
-            });
+        if (this.props.selectedValue.length) {
+            const endPoint = 'http://localhost:3310/';
+            const data = this.props.selectedValue;
+            this.props.submitData({ data, endPoint });
         } else {
-            this.setState({
-                results: []
-            });
-        }
-    }
-
-    updateSelectedValue = (value) => {
-        if (value) {
-            const updatedSelectedValue = [...this.state.selectedValue, value];
-            this.setState({
-                selectedValue: updatedSelectedValue
-            });
+            this.props.resetData();
         }
     }
 
     render() {
-        const { results, selectedValue } = this.state;
+        const { results, selectedValue } = this.props;
 
         return (
             <div className="mobile__container">
@@ -78,7 +51,7 @@ class Mobile extends Component {
                     <Button
                         customClass="btn mobile__cancel-button"
                         label="Cancel"
-                        handleClick={this.handleClickCancelButton}
+                        handleClick={this.props.removeLastEnteredData}
                     />
 
                     <MiniDisplay selectedValue={selectedValue.join('')} />
@@ -93,7 +66,7 @@ class Mobile extends Component {
                 <div className="mobile__numeric-buttons-wrapper">
                     <NumericButtons
                         definitions={this.numericButtonsDefinition}
-                        handleClick={this.updateSelectedValue}
+                        handleClick={this.props.updateSelectedData}
                     />
                 </div>
             </div>
@@ -101,4 +74,25 @@ class Mobile extends Component {
     }
 }
 
-export default Mobile;
+Mobile.propTypes = {
+    submitData: PropTypes.func.isRequired,
+    resetData: PropTypes.func.isRequired,
+    removeLastEnteredData: PropTypes.func.isRequired,
+    updateSelectedData: PropTypes.func.isRequired,
+    results: PropTypes.arrayOf(PropTypes.string).isRequired,
+    selectedValue: PropTypes.arrayOf(PropTypes.string).isRequired
+};
+
+export default connect((state) => {
+    const { mobile } = state;
+    const { results, selectedValue } = mobile;
+    return {
+        results,
+        selectedValue
+    };
+}, {
+    updateSelectedData,
+    removeLastEnteredData,
+    resetData,
+    submitData
+})(Mobile);

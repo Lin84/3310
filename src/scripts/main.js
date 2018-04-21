@@ -1,20 +1,17 @@
-/**
- * main styles:
- */
+// main styles:
 import css from './../styles/main.scss';
 
-/**
- * React Component:
- */
-import configureStore from './redux/store/configureStore';
+// ultilities:
 import { render, renderFactory } from './ultilities/render';
+
+// config:
+import configureStore from './redux/store/configureStore';
 
 // react components:
 import Headline from './components/_common/Headline';
-// import PlusOne from './components/plus-one/PlusOne';
-// import Button from './components/_common/Button';
-import Mobile from './components/Mobile/Mobile';
 
+// connected react components:
+import Mobile from './components/Mobile/Mobile';
 
 /**
  * @param {object} config
@@ -23,8 +20,7 @@ const app = (config) => {
     const store = configureStore(config);
 
     render(Headline, document.querySelector('#headline'), { label: 'T9 Generator' });
-
-    render(Mobile, document.querySelector('#mobile'));
+    render(Mobile, document.querySelector('#mobile'), {}, store);
 };
 
 app(window.config);

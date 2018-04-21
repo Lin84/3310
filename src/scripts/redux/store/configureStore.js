@@ -1,13 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import rootReducer from './root-reducer';
 
-const enhancer = applyMiddleware(
-    logger,
-    thunk
-);
+const enhancer = applyMiddleware(thunk);
 
 export default function configureStore(initialState) {
     /* eslint-disable no-underscore-dangle */

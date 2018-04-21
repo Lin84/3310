@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import counter from './../../components/plus-one/reducer';
+import mobile from './../reducers/mobile';
 
 const rootReducer = combineReducers({
-    counter
+    mobile
 });
 
 export default rootReducer;
