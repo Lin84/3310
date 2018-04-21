@@ -11,10 +11,10 @@ import { render, renderFactory } from './ultilities/render';
 
 // react components:
 import Headline from './components/_common/Headline';
-import PlusOne from './components/plus-one/PlusOne';
-import Button from './components/_common/Button';
-
+// import PlusOne from './components/plus-one/PlusOne';
+// import Button from './components/_common/Button';
 import Mobile from './components/Mobile/Mobile';
+
 
 /**
  * @param {object} config
@@ -22,21 +22,7 @@ import Mobile from './components/Mobile/Mobile';
 const app = (config) => {
     const store = configureStore(config);
 
-    // Demo render react component once:
-    render(Headline, document.querySelector('#headline'), { label: 'Hello' });
-
-    // // Demo render react component more times:
-    // renderFactory(Link, document.querySelectorAll('.link'));
-
-    // // Demo render react component connected to the Redux store:
-    // renderFactory(PlusOne, document.querySelectorAll('.plus-one'), {}, store);
-
-    // // Demo testing react component with jest and enzyme:
-    renderFactory(Button, document.querySelectorAll('.button'), {
-        class: 'btn btn-primary',
-        label: 'Submit',
-        handleClick: () => { console.log('Click'); }
-    });
+    render(Headline, document.querySelector('#headline'), { label: 'T9 Generator' });
 
     render(Mobile, document.querySelector('#mobile'));
 };

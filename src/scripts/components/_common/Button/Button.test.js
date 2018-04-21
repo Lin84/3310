@@ -10,6 +10,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
+
 import Button from './index';
 
 /**
@@ -25,15 +26,15 @@ const createTestProps = props => ({
  * @param {object} props
  * @return {wrapper} contains shallow component
  */
-const createWrapper = props => shallow(<Button {...props}/>);
+const createWrapper = props => shallow(<Button {...props} />);
 
 describe('rendering', () => {
     let wrapper;
 
     beforeEach(() => {
-        const props = createTestProps()
+        const props = createTestProps();
         wrapper = createWrapper(props);
-    })
+    });
 
     it('should render a <Button />', () => {
         expect(wrapper.find('button')).toHaveLength(1);
@@ -53,7 +54,7 @@ describe('rendering', () => {
 
     describe('primary type', () => {
         beforeEach(() => {
-            const props = createTestProps({class: 'btn-primary'})
+            const props = createTestProps({ customClass: 'btn-primary' });
             wrapper = createWrapper(props);
         });
 
@@ -68,7 +69,7 @@ describe('interaction', () => {
     let props;
 
     beforeEach(() => {
-        props = createTestProps({ handleClick: jest.fn()});
+        props = createTestProps({ handleClick: jest.fn() });
         wrapper = createWrapper(props);
     });
 
@@ -78,6 +79,6 @@ describe('interaction', () => {
         });
         it('should call the onClick callBack', () => {
             expect(props.handleClick).toHaveBeenCalledTimes(1);
-        })
-    })
-})
+        });
+    });
+});
