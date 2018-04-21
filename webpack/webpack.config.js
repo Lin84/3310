@@ -9,6 +9,7 @@ const cssConfig = require('./css.config');
 /**
  * Plugins:
  */
+const cssnano = require('cssnano')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -47,8 +48,14 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules)/,
                 use: 'babel-loader'
+            },
+            {
+                enforce: 'pre',
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader'
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
@@ -159,7 +166,7 @@ module.exports = {
 
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/g,
-            cssProcessor: require('cssnano'),
+            cssProcessor: cssnano,
             cssProcessorOptions: { discardComments: { removeAll: true } },
             canPrint: true
         })
