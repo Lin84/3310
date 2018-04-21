@@ -1,9 +1,6 @@
 {
     "presets": [
         "react",
-        "latest"
-    ],
-    "plugins": [
-        "transform-object-rest-spread"
+        "stage-0"
     ]
 }
