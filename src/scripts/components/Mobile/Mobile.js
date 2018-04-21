@@ -35,21 +35,27 @@ class Mobile extends Component {
     }
 
     handleClickSendButton = () => {
-        const endpoint = 'http://localhost:3310/';
-        const data = this.state.selectedValue;
-        const method = 'post';
+        if (this.state.selectedValue.length) {
+            const endpoint = 'http://localhost:3310/';
+            const data = this.state.selectedValue;
+            const method = 'post';
 
-        axios({
-            url: endpoint,
-            method,
-            data
-        }).then((response) => {
+            axios({
+                url: endpoint,
+                method,
+                data
+            }).then((response) => {
+                this.setState({
+                    results: response.data
+                });
+            }).catch((error) => {
+                console.error(error);
+            });
+        } else {
             this.setState({
-                results: response.data
-            })
-        }).catch((error) => {
-            console.error(error);
-        });
+                results: []
+            });
+        }
     }
 
     updateSelectedValue = (value) => {

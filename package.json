@@ -4,23 +4,22 @@
     "description": "create the development start kit with webpack",
     "main": "main.js",
     "scripts": {
-        "dev": "webpack-dev-server --config ./webpack/webpack.config.js",
+        "dev": "concurrently --kill-others \"yarn start\" \"yarn express\"",
+        "start": "webpack-dev-server --config ./webpack/webpack.config.js",
+        "express": "nodemon ./server/server.js",
         "build": "npm run clean && NODE_ENV=production webpack --config ./webpack/webpack.config.js -p",
         "clean": "rimraf ./dist/*",
         "test": "jest",
         "test:c": "jest --coverage",
         "test:w": "jest --watch",
-        "test:w:c": "jest --watch --coverage",
-        "json:server": "json-server --watch ./src/api/db.js",
-        "json:mokker": "node ./server/server.js",
-        "dev:server": "concurrently --kill-others \"npm run dev\" \"npm run json:server\"",
-        "express": "nodemon ./server.js",
-        "dev:express": "concurrently --kill-others \"yarn dev\" \"yarn express\""
+        "test:w:c": "jest --watch --coverage"
     },
     "keywords": [
+        "T9 Generateor",
+        "expressjs",
         "webpack",
         "jest",
-        "json-server"
+        "enzyme"
     ],
     "author": "Linh Le Tuan",
     "license": "ISC",
@@ -52,7 +51,6 @@
         "eslint-plugin-node": "^6.0.0",
         "eslint-plugin-promise": "^3.6.0",
         "eslint-plugin-react": "^7.6.1",
-        "extract-text-webpack-plugin": "^3.0.0",
         "file-loader": "^0.11.2",
         "html-loader": "^0.5.1",
         "html-webpack-plugin": "^2.30.1",
@@ -61,8 +59,6 @@
         "jest": "^21.2.1",
         "jest-cli": "^21.2.1",
         "jquery": "^3.2.1",
-        "json-server": "^0.12.1",
-        "mokker": "^0.3.2",
         "node-sass": "^4.5.3",
         "nodemon": "^1.17.3",
         "nunjucks": "^3.0.1",
@@ -78,13 +74,13 @@
         "url-loader": "^0.5.9",
         "webpack": "^3.5.5",
         "webpack-dev-server": "^2.7.1"
-
     },
     "dependencies": {
         "axios": "^0.18.0",
         "body-parser": "^1.18.2",
         "cssnano": "^3.10.0",
         "express": "^4.16.3",
+        "extract-text-webpack-plugin": "^3.0.0",
         "glob": "^7.1.2",
         "prop-types": "^15.6.0",
         "react": "^16.0.0",

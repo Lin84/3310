@@ -1,31 +1,29 @@
-'use strict';
-
 const path = require('path');
-const glob = require('glob');
-const webpack = require('webpack');
-const bootstrapEntryPoints = require('./webpack.bootstrap.config');
-const cssConfig = require('./css.config');
 
-/**
- * Plugins:
- */
-const cssnano = require('cssnano')
+const glob = require('glob');
+
+const webpack = require('webpack');
+
+// Plugins:
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-const ModuleConcatenationPlugin = webpack.optimize.ModuleConcatenationPlugin;
-const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
-const NamedModulesPlugin = webpack.NamedModulesPlugin;
+const cssnano = require('cssnano');
 
-/**
- * define the config either for production mode or development mode
- */
+const { HotModuleReplacementPlugin, NamedModulesPlugin, optimize } = webpack;
+const { CommonsChunkPlugin, ModuleConcatenationPlugin } = optimize;
+
+// config:
+const bootstrapEntryPoints = require('./webpack.bootstrap.config');
+const cssConfig = require('./css.config');
+
+// define the config either for production mode or development mode:
 const isProd = process.env.NODE_ENV === 'production'; // @return {boolean}
 const cssSetup = isProd ? cssConfig.prod : cssConfig.dev;
 const bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
+
 
 module.exports = {
     entry: {
@@ -36,7 +34,7 @@ module.exports = {
     },
 
     output: {
-        path: path.resolve(__dirname + './../dist'),
+        path: path.resolve(`${__dirname}./../dist`),
         filename: 'scripts/[name].bundle.js'
     },
 
@@ -73,7 +71,7 @@ module.exports = {
                 use: 'file-loader?name=fonts/[name].[ext]'
             },
             {
-                test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
+                test: /bootstrap-sass[/\\]assets[/\\]javascripts[/\\]/,
                 use: 'imports-loader?jQuery=jquery'
             },
             {
@@ -82,13 +80,13 @@ module.exports = {
                     {
                         loader: 'nunjucks-html-loader',
                         options: {
-                            'searchPaths': [
+                            searchPaths: [
                                 'src/templates',
                                 'src/templates/partials'
-                            ],
-                        },
-                    },
-                ],
+                            ]
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -113,8 +111,8 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             inject: 'body',
-            template: 'html-loader?interpolate!nunjucks-html-loader!' + path.resolve('./src', 'templates/index.nunj'),
-             // order in array here doesn't matters:
+            template: `html-loader?interpolate!nunjucks-html-loader!${path.resolve('./src', 'templates/index.nunj')}`,
+            // order in array here doesn't matters:
             chunks: [
                 'vendor',
                 'main'
@@ -171,4 +169,4 @@ module.exports = {
             canPrint: true
         })
     ]
-}
+};
