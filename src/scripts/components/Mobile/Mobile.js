@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 // components:
 import Button from './../_common/Button';
@@ -9,8 +10,8 @@ import NumericButtons from './_parts/NumericButtons';
 
 class Mobile extends Component {
     state = {
-        results: ['display', 'reulst', 'static', 'data'],
-        selectedValue: ['2', '3']
+        results: [],
+        selectedValue: []
     }
 
     numericButtonsDefinition = [
@@ -25,6 +26,41 @@ class Mobile extends Component {
         { label: 'wxyz', value: '9' }
     ]
 
+    handleClickCancelButton = () => {
+        const { selectedValue } = this.state;
+        const updatedSelectedValue = selectedValue.slice(0, -1);
+        this.setState({
+            selectedValue: updatedSelectedValue
+        });
+    }
+
+    handleClickSendButton = () => {
+        const endpoint = 'http://localhost:3310/';
+        const data = this.state.selectedValue;
+        const method = 'post';
+
+        axios({
+            url: endpoint,
+            method,
+            data
+        }).then((response) => {
+            this.setState({
+                results: response.data
+            })
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
+
+    updateSelectedValue = (value) => {
+        if (value) {
+            const updatedSelectedValue = [...this.state.selectedValue, value];
+            this.setState({
+                selectedValue: updatedSelectedValue
+            });
+        }
+    }
+
     render() {
         const { results, selectedValue } = this.state;
 
@@ -36,20 +72,23 @@ class Mobile extends Component {
                     <Button
                         customClass="btn mobile__cancel-button"
                         label="Cancel"
-                        handleClick={() => console.log('Click cancel button')}
+                        handleClick={this.handleClickCancelButton}
                     />
 
-                    <MiniDisplay selectedValue={selectedValue} />
+                    <MiniDisplay selectedValue={selectedValue.join('')} />
 
                     <Button
                         customClass="btn mobile__send-button"
                         label="Send"
-                        handleClick={() => console.log('Click send button')}
+                        handleClick={this.handleClickSendButton}
                     />
                 </div>
 
                 <div className="mobile__numeric-buttons-wrapper">
-                    <NumericButtons definitions={this.numericButtonsDefinition} />
+                    <NumericButtons
+                        definitions={this.numericButtonsDefinition}
+                        handleClick={this.updateSelectedValue}
+                    />
                 </div>
             </div>
         );

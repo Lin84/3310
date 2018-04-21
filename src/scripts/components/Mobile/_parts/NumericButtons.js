@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import Button from './../../_common/Button';
 
 const NumericButtons = (props) => {
-    const renderButtons = props.definitions.map(({ label, value }) => {
+    const { definitions, handleClick } = props;
+    const renderButtons = definitions.map(({ label, value }) => {
         return (
             <Button
                 key={label}
                 customClass="btn mobile__numberic-button"
                 label={label}
-                handleClick={() => console.log(`Click send button ${value}`)}
+                handleClick={() => handleClick(value)}
             />
         );
     });
