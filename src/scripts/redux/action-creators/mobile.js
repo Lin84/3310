@@ -32,11 +32,11 @@ export const removeLastEnteredData = () => {
 
 export const resetData = () => {
     return {
-        type: 'RESET_DATA'
+        type: RESET_DATA
     };
 };
 
-export const submitData = ({ data, endPoint }) => {
+export const submitData = ({ data, endpoint }) => {
     return (dispatch) => {
         dispatch({
             type: SUBMIT_DATA
@@ -45,7 +45,7 @@ export const submitData = ({ data, endPoint }) => {
         createLoadingCircle();
         showLoadingCircle();
 
-        axios(endPoint, {
+        axios(endpoint, {
             method: 'POST',
             data
         })

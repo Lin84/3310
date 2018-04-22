@@ -6,8 +6,6 @@ import {
     HANDLE_SUBMIT_ERROR
 } from './../constants';
 
-import * as actions from './../action-creators/mobile';
-
 const defaultState = {
     results: [],
     selectedValue: []

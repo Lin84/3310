@@ -34,9 +34,9 @@ class Mobile extends Component {
         const { selectedValue, submitData, resetData } = this.props;
 
         if (selectedValue.length) {
-            const endPoint = 'http://localhost:3310/';
+            const endpoint = 'http://localhost:3310/';
             const data = selectedValue;
-            submitData({ data, endPoint });
+            submitData({ data, endpoint });
         } else {
             resetData();
         }
