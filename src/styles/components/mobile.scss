@@ -1,7 +1,7 @@
 .mobile {
     &__container {
         width: 40rem;
-        height: 53rem;
+        height: 55rem;
         border-radius: 3%;
         background-color: #42404E;
         padding: .5rem;
@@ -44,6 +44,13 @@
     &__numberic-button {
         margin: 0.5rem;
         width: calc(100% * (1/3) - 10px);
+        text-align: left;
+        padding-left: 4rem;
+
+        &::first-letter {
+            color: red;
+            font-size: 2rem;
+        }
     };
 
     &__functional-buttons-wrapper {
