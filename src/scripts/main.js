@@ -11,7 +11,7 @@ import configureStore from './redux/store/configureStore';
 import Headline from './components/_common/Headline';
 
 // connected react components:
-import Mobile from './components/Mobile/Mobile';
+import Mobile from './components/Mobile';
 
 /**
  * @param {object} config

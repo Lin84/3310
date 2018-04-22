@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 // components:
-import Button from './../../_common/Button';
+import Button from './../../../_common/Button';
 
 const MiddleBody = (props) => {
     return (

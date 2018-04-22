@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from './../../_common/Button';
+import Button from './../../../_common/Button';
 
 const NumericButtons = (props) => {
     const { definitions, handleClick } = props;
