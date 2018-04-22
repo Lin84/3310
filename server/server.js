@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const port = 3310;
-const { getAllCombinations } = require('./controllers/generatorController');
+const { generatorController } = require('./controllers/generatorController');
 
 
 const app = express();
@@ -28,6 +28,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.post('/', getAllCombinations);
+app.post('/', generatorController);
 
 app.listen(port, () => console.log('\x1b[36m%s\x1b[0m', `Listening on port http://localhost:${port}`));

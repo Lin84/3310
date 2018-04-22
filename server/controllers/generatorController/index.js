@@ -1,6 +1,4 @@
-function getAllCombinations(req, res) {
-    const inputs = req.body;
-
+function getAllCombinations(inputs) {
     if (!Array.isArray(inputs)) {
         throw new TypeError();
     }
@@ -46,9 +44,15 @@ function getAllCombinations(req, res) {
         result.push([]);
     }
 
+    return result;
+}
+
+function generatorController(req, res) {
+    const result = getAllCombinations(req.body);
     res.send(result);
 }
 
 module.exports = {
-    getAllCombinations
+    getAllCombinations,
+    generatorController
 };
