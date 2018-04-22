@@ -1,4 +1,6 @@
-module.exports = function getAllConbinatinos(inputs) {
+function getAllCombinations(req, res) {
+    const inputs = req.body;
+
     if (!Array.isArray(inputs)) {
         throw new TypeError();
     }
@@ -44,5 +46,9 @@ module.exports = function getAllConbinatinos(inputs) {
         result.push([]);
     }
 
-    return result;
+    res.send(result);
+}
+
+module.exports = {
+    getAllCombinations
 };
