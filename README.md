@@ -4,6 +4,11 @@ Simple all combinations generator app created by using React, Redux, Express and
 ## Getting started
 ### Preparations
 1. This development stack uses [Node](https://nodejs.org), so make sure you have it installed.
+```bash
+// Recomended Node version:
+node -v
+v9.11.1
+```
 2. Install [Webpack](https://webpack.js.org/) globally:
 
 ```bash
