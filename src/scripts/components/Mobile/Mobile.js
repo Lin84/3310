@@ -6,7 +6,7 @@ import axios from 'axios';
 // components:
 import Button from './../_common/Button';
 import MainDisplay from './_parts/MainDisplay';
-import MiniDisplay from './_parts/MiniDisplay';
+import MiddleBody from './_parts/MiddleBody';
 import NumericButtons from './_parts/NumericButtons';
 
 // action creators:
@@ -31,42 +31,47 @@ class Mobile extends Component {
     ]
 
     handleClickSendButton = () => {
-        if (this.props.selectedValue.length) {
+        const { selectedValue, submitData, resetData } = this.props;
+
+        if (selectedValue.length) {
             const endPoint = 'http://localhost:3310/';
-            const data = this.props.selectedValue;
-            this.props.submitData({ data, endPoint });
+            const data = selectedValue;
+            submitData({ data, endPoint });
         } else {
-            this.props.resetData();
+            resetData();
+        }
+    }
+
+    handleClickNumericButton = (value) => {
+        if (value !== '') {
+            this.props.updateSelectedData(value);
         }
     }
 
     render() {
-        const { results, selectedValue } = this.props;
+        const {
+            results,
+            selectedValue,
+            removeLastEnteredData,
+            updateSelectedData
+        } = this.props;
 
         return (
             <div className="mobile__container">
                 <MainDisplay results={results} />
 
-                <div className="mobile__functional-buttons-wrapper">
-                    <Button
-                        customClass="btn mobile__cancel-button"
-                        label="Cancel"
-                        handleClick={this.props.removeLastEnteredData}
-                    />
-
-                    <MiniDisplay selectedValue={selectedValue.join('')} />
-
-                    <Button
-                        customClass="btn mobile__send-button"
-                        label="Send"
-                        handleClick={this.handleClickSendButton}
+                <div className="mobile__middle-body-wrapper">
+                    <MiddleBody
+                        removeLastEnteredData={removeLastEnteredData}
+                        handleClickSendButton={this.handleClickSendButton}
+                        selectedValue={selectedValue.join('')}
                     />
                 </div>
 
                 <div className="mobile__numeric-buttons-wrapper">
                     <NumericButtons
                         definitions={this.numericButtonsDefinition}
-                        handleClick={this.props.updateSelectedData}
+                        handleClick={this.handleClickNumericButton}
                     />
                 </div>
             </div>
@@ -86,6 +91,7 @@ Mobile.propTypes = {
 export default connect((state) => {
     const { mobile } = state;
     const { results, selectedValue } = mobile;
+
     return {
         results,
         selectedValue
