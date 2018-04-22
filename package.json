@@ -1,7 +1,7 @@
 {
-    "name": "web-star",
+    "name": "T9",
     "version": "1.0.0",
-    "description": "create the development start kit with webpack",
+    "description": "create simple T9 app with webpack, jest, enzyme, react, redux, express",
     "main": "main.js",
     "scripts": {
         "dev": "concurrently --kill-others \"yarn start\" \"yarn express\"",
@@ -10,16 +10,18 @@
         "build": "npm run clean && NODE_ENV=production webpack --config ./webpack/webpack.config.js -p",
         "clean": "rimraf ./dist/*",
         "test": "jest",
-        "test:c": "jest --coverage",
-        "test:w": "jest --watch",
-        "test:w:c": "jest --watch --coverage"
+        "test:coverage": "jest --coverage",
+        "test:watch": "jest --watch",
+        "test:watch:coverage": "jest --watch --coverage"
     },
     "keywords": [
         "T9 Generateor",
         "expressjs",
         "webpack",
         "jest",
-        "enzyme"
+        "enzyme",
+        "react",
+        "redux"
     ],
     "author": "Linh Le Tuan",
     "license": "ISC",
