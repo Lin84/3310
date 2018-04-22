@@ -1,8 +1,11 @@
+@import './variables.scss';
 @import './../styles/bootstrap/customizations.scss';
 @import './components/_common/headline.scss';
 @import './components/mobile.scss';
 @import './components/loader.scss';
 
 body {
-    background-color: green;
+    background: #ad5389;
+    background: -webkit-linear-gradient(to right, #ad5389, #3c1053);
+    background: linear-gradient(to right, #ad5389, #3c1053);
 }

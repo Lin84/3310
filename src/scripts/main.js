@@ -19,8 +19,8 @@ import Mobile from './components/Mobile';
 const app = (config) => {
     const store = configureStore(config);
 
-    render(Headline, document.querySelector('#headline'), { label: 'T9 Generator' });
-    render(Mobile, document.querySelector('#mobile'), {}, store);
+    render(Headline, document.querySelector('.headline'), { label: 'T9 Generator' });
+    render(Mobile, document.querySelector('.mobile'), {}, store);
 };
 
 app(window.config);

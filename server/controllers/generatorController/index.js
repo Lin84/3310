@@ -1,6 +1,6 @@
 function getAllCombinations(inputs) {
     if (!Array.isArray(inputs)) {
-        throw new TypeError();
+        throw new TypeError('function accept only data type array');
     }
 
     const alphabet = {
