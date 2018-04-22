@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <button
+    className="btn btn mobile__cancel-button"
+    onClick={[Function]}
+  >
+    Cancel
+  </button>,
+  <div
+    className="mobile__mini-display"
+  >
+    236
+  </div>,
+  <button
+    className="btn btn mobile__send-button"
+    onClick={[Function]}
+  >
+    Send
+  </button>,
+]
+`;

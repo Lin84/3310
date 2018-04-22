@@ -20,7 +20,8 @@ const NumericButtons = (props) => {
 };
 
 NumericButtons.propTypes = {
-    definitions: PropTypes.arrayOf(PropTypes.object).isRequired
+    definitions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    handleClick: PropTypes.func.isRequired
 };
 
 export default NumericButtons;

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <button
+    className="btn btn mobile__numberic-button"
+    onClick={[Function]}
+  >
+    1 _
+  </button>,
+  <button
+    className="btn btn mobile__numberic-button"
+    onClick={[Function]}
+  >
+    2 abc
+  </button>,
+  <button
+    className="btn btn mobile__numberic-button"
+    onClick={[Function]}
+  >
+    3 def
+  </button>,
+  <button
+    className="btn btn mobile__numberic-button"
+    onClick={[Function]}
+  >
+    4 ghi
+  </button>,
+  <button
+    className="btn btn mobile__numberic-button"
+    onClick={[Function]}
+  >
+    5 jkl
+  </button>,
+  <button
+    className="btn btn mobile__numberic-button"
+    onClick={[Function]}
+  >
+    6 mno
+  </button>,
+  <button
+    className="btn btn mobile__numberic-button"
+    onClick={[Function]}
+  >
+    7 pqrs
+  </button>,
+  <button
+    className="btn btn mobile__numberic-button"
+    onClick={[Function]}
+  >
+    8 tuv
+  </button>,
+  <button
+    className="btn btn mobile__numberic-button"
+    onClick={[Function]}
+  >
+    9 wxyz
+  </button>,
+]
+`;

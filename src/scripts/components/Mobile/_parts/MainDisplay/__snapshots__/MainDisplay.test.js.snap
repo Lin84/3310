@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="mobile__main-display"
+>
+  <div
+    className="mobile__result"
+  >
+    test
+  </div>
+  <div
+    className="mobile__result"
+  >
+    maindisplay
+  </div>
+</div>
+`;
