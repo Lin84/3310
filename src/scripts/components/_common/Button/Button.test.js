@@ -19,6 +19,7 @@ import Button from './index';
  */
 const createTestProps = props => ({
     label: 'Submit',
+    handleClick: () => {},
     ...props
 });
 
@@ -36,29 +37,27 @@ describe('rendering', () => {
         wrapper = createWrapper(props);
     });
 
-    it('should render a <Button />', () => {
+    it('should render a react component Button', () => {
         expect(wrapper.find('button')).toHaveLength(1);
     });
 
     it('should render a label', () => {
-        // expect(wrapper.find('button').contains('Submit')).toBe(true);
-        // or:
-        expect(wrapper.find('button').text()).toEqual('Submit');
+        expect(wrapper.find('button').contains('Submit')).toBe(true);
     });
 
-    describe('no type', () => {
-        it('should have default styles', () => {
+    describe('no custom class', () => {
+        it('should have default custom class', () => {
             expect(wrapper.find('button').hasClass('btn-default')).toBe(true);
         });
     });
 
-    describe('primary type', () => {
+    describe('with custom class', () => {
         beforeEach(() => {
             const props = createTestProps({ customClass: 'btn-primary' });
             wrapper = createWrapper(props);
         });
 
-        it('should have primary styles', () => {
+        it('should have custom class', () => {
             expect(wrapper.find('button').hasClass('btn-primary')).toBe(true);
         });
     });
