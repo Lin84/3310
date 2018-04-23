@@ -9,15 +9,8 @@ Simple combinations generator app created by using React, Redux, Express and tes
 node -v
 v9.11.1
 ```
-2. Install [Webpack](https://webpack.js.org/) globally:
+2. Install [npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/en) to run project.
 
-```bash
-npm install -g webpack
-
-or
-
-yarn global add webpack
-```
 ### Setup
 1. To clone the repository run in terminal:
 
