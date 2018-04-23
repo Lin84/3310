@@ -1,3 +1,8 @@
+
+/**
+ * @param {array} inputs
+ * @return {array}
+ */
 function getAllCombinations(inputs) {
     if (!Array.isArray(inputs)) {
         throw new TypeError('function accept only data type array');

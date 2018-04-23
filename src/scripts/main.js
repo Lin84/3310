@@ -19,7 +19,7 @@ import Mobile from './components/Mobile';
 const app = (config) => {
     const store = configureStore(config);
 
-    render(Headline, document.querySelector('.headline'), { label: 'T9 Generator' });
+    render(Headline, document.querySelector('.headline'), { label: 'Combinations Generator' });
     render(Mobile, document.querySelector('.mobile'), {}, store);
 };
 

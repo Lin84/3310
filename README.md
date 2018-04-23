@@ -1,5 +1,5 @@
-# T9 generator
-Simple all combinations generator app created by using React, Redux, Express and tested by Jest and Enzyme
+# Combinations generator
+Simple combinations generator app created by using React, Redux, Express and tested by Jest and Enzyme
 
 ## Getting started
 ### Preparations
